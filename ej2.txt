@@ -1,0 +1,19 @@
+CREATE TABLE `departamentos` (
+  `idDep` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `presupuesto` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idDep`),
+  UNIQUE KEY `idDep_UNIQUE` (`idDep`),
+  UNIQUE KEY `nombre_UNIQUE` (`nombre`)
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `empleados` (
+  `dni` varchar(8) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `apellidos` varchar(255) NOT NULL,
+  `departamento` int(11) NOT NULL,
+  PRIMARY KEY (`dni`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`),
+  KEY `departamento_idx` (`departamento`),
+  CONSTRAINT `departamento` FOREIGN KEY (`departamento`) REFERENCES `departamentos` (`idDep`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci

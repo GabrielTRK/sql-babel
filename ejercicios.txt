@@ -1,0 +1,18 @@
+CREATE TABLE `articulos` (
+  `idarticulos` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  `precio` int(11) NOT NULL,
+  `fabricante` int(11) NOT NULL,
+  PRIMARY KEY (`idarticulos`),
+  UNIQUE KEY `idarticulos_UNIQUE` (`idarticulos`),
+  KEY `fabricante_idx` (`fabricante`),
+  CONSTRAINT `fabricante` FOREIGN KEY (`fabricante`) REFERENCES `fabricantes` (`idfabricantes`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+CREATE TABLE `fabricantes` (
+  `idfabricantes` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) NOT NULL,
+  PRIMARY KEY (`idfabricantes`),
+  UNIQUE KEY `idfabricantes_UNIQUE` (`idfabricantes`),
+  UNIQUE KEY `nombre_UNIQUE` (`nombre`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
